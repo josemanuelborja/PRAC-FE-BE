@@ -60,3 +60,12 @@ When data changes in TypeScript, Angular automatically updates the UI.
 👉 Example:
 
 coins changes → UI updates instantly
+
+
+DON'T FORGET 
+
+* {{ }} → display data
+* (click) → run function
+* *ngIf → show/hide
+* this.variable → access state
+* Angular auto updates UI
