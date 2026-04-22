@@ -11,4 +11,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title: string = 'My First Angular App';
 
+  coins: number = 0;
+
+  addCoins() {
+    this.coins = this.coins + 5; // or this,coins += 5;
+  }
+
 }
