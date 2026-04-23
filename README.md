@@ -1,59 +1,80 @@
-# FEBE
+# 🚀 Day 2 – Angular User Input & Two-Way Binding
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## 🎯 Objective
+Learn how to handle user input in Angular using two-way binding, and apply conditions to display dynamic data based on user input.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🧠 Key Concepts
 
-```bash
-ng serve
-```
+### 1. Two-Way Binding (`[(ngModel)]`)
+Connects the input field and the variable.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+```html
+<input [(ngModel)]="name">
 
-## Code scaffolding
+👉 Purpose:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Updates variable when user types
+Updates input if variable changes
+2. Variables with null
+age: number | null = null;
 
-```bash
-ng generate component component-name
-```
+👉 Purpose:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+null means “no value yet”
+Better than 0 because 0 is already a value
+3. Conditional Checks (*ngIf)
+<p *ngIf="age !== null">You are {{ age }} years old</p>
+Give feedback
 
-```bash
-ng generate --help
-```
+👉 Purpose:
 
-## Building
+Show content only when value exists
+4. Strict Comparison (!== null)
+age !== null
 
-To build the project run:
+👉 Purpose:
 
-```bash
-ng build
-```
+Ensures the value is NOT empty
+Prevents showing UI too early
+5. Multiple Conditions (&&)
+<p *ngIf="age !== null && age >= 18">You are an adult</p>
+Give feedback
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+👉 Purpose:
 
-## Running unit tests
+Combine conditions
+Both must be true
+💻 Code Example
+TypeScript
+name: string = '';
+age: number | null = null;
+HTML
+<p *ngIf="name">Hello, {{ name }}!</p>
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+<p *ngIf="age !== null && age >= 0">
+  You are {{ age }} years old
+</p>
 
-```bash
-ng test
-```
+<p *ngIf="age !== null && age >= 18">
+  You are an adult
+</p>
 
-## Running end-to-end tests
+<p *ngIf="age !== null && age < 18">
+  You are a minor
+</p>
 
-For end-to-end (e2e) testing, run:
+<input [(ngModel)]="name" placeholder="Enter your name">
+<input [(ngModel)]="age" type="number" placeholder="Enter your age">
+Give feedback
+🔁 Summary / Key Takeaways
+[(ngModel)] → connects input and variable (two-way)
+null → represents empty/no value
+!== null → checks if value exists
+&& → combines multiple conditions
+*ngIf → controls what shows on screen
+Angular updates UI automatically when data changes
+🧠 Key Insight
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Angular makes apps interactive by connecting user input directly to data, then reflecting that data in the UI instantly.
