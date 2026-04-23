@@ -1,8 +1,3 @@
-Here’s your content converted into a clean **README.md style**:
-
----
-
-````md
 # 🚀 Day 2 – Angular User Input & Two-Way Binding
 
 ## 🎯 Objective
@@ -115,7 +110,6 @@ age: number | null = null;
 <input [(ngModel)]="age" type="number" placeholder="Enter your age">
 ```
 
----
 
 ## 📌 Quick Summary
 
