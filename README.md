@@ -117,6 +117,8 @@ age: number | null = null;
 * `null` → represents empty/no value
 * `!== null` → checks if value exists
 * `&&` → combines multiple conditions
+* `||` → at least one condition must be true
+* `!` → reverses the value (NOT)
 * `*ngIf` → controls what shows on screen
 * Angular updates UI automatically when data changes
 
