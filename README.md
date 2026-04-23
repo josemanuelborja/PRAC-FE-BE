@@ -116,9 +116,9 @@ age: number | null = null;
 * `[(ngModel)]` → connects input and variable (two-way binding)
 * `null` → represents empty/no value
 * `!== null` → checks if value exists
-* `&&` → combines multiple conditions
-* `||` → at least one condition must be true
-* `!` → reverses the value (NOT)
+* `&&` → combines multiple conditions (AND: both must be true)
+* `||` → (OR) at least one condition must be true
+* `!` → reverses the value (NOT: true becomes false, false becomes true)
 * `*ngIf` → controls what shows on screen
 * Angular updates UI automatically when data changes
 
