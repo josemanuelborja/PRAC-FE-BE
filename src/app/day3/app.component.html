@@ -1,0 +1,30 @@
+<h1>{{ title }} </h1>
+
+<h1>Signup Form</h1>
+
+<input [(ngModel)]="name" placeholder="Enter name">
+<br><br>
+
+<input [(ngModel)]="email" placeholder="Enter email">
+<br><br>
+
+<input [(ngModel)]="password" type="password" placeholder="Enter password">
+<br><br>
+
+<input [(ngModel)]="confirmPassword" type="password" placeholder="Confirm password">
+<br><br>
+<button [disabled]="!isFormValid() || !passwordsMatch()">
+  Submit
+</button>
+
+<p *ngIf="password.length > 0 && password.length < 6">
+  Password is too short
+</p>
+
+<p *ngIf="isFormValid()">
+  Form is ready to submit!
+</p>
+
+<p *ngIf="!passwordsMatch()">
+  Passwords do not match!
+</p>
