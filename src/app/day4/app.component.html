@@ -1,0 +1,56 @@
+<h1>{{ title }} </h1>
+
+<p>Coins: {{ coins }}</p>
+
+<p *ngIf="showMessage" >
+Hello Angular!
+</p>
+
+<p> {{ showMessage ? 'Hide Message' : 'Show Message' }} </p>
+
+<button (click)="toggleMessage()">
+Toggle Message
+</button>
+
+<button (click)="addCoins(5)">
+Add 5
+</button>
+
+<button (click)="addCoins(10)">
+Add 10
+</button>
+
+<button (click)="addCoins(50)">
+Add 50
+</button>
+
+<br><br>
+
+<input
+[type]="showPassword ? 'text' : 'password'"
+[(ngModel)]="password"
+placeholder="Password"
+/>
+
+<button (click)="togglePassword()">
+Show Password / Hide Password
+</button>
+
+<br><br>
+
+<input [(ngModel)]="task">
+
+<button (click)="addTask()">
+Add Task
+</button>
+
+<ul>
+<li *ngFor="let item of tasks; let i = index">
+ {{ item }}
+
+<button (click)="removeTask(i)">
+Delete
+</button>
+
+</li>
+</ul>
