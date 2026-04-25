@@ -262,41 +262,6 @@ State Changes
 ↓
 UI Updates Automatically
 ```
-
----
-
-# Mini Projects Built
-
-## Coin Counter
-
-* Add 5
-* Add 10
-* Add 50
-* Demonstrates function parameters (`amount`)
-
----
-
-## Toggle Message Feature
-
-Show and hide content dynamically.
-
----
-
-## Show/Hide Password
-
-Interactive password visibility feature.
-
----
-
-## Simple Todo List
-
-Features:
-
-* Add task
-* Delete task
-* Render task list dynamically
-* Uses `index` to target items
-
 ---
 
 # Key Takeaways
