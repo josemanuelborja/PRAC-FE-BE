@@ -1,59 +1,239 @@
-# FEBE
+# 🚀 Day 4 — Angular Events and User Interactions
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## Objective
+Learn how Angular handles user interactions through events, function parameters, toggles, and dynamic lists.
 
-## Development server
+This session focused on building interactive UI behavior using event-driven programming.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+# Key Concepts Learned
+
+## 1. Function Parameters
+Functions can receive values when triggered by events.
+
+```ts
+addCoins(amount: number) {
+  this.coins += amount;
+}
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```html
+<button (click)="addCoins(5)">Add 5</button>
+<button (click)="addCoins(10)">Add 10</button>
+<button (click)="addCoins(50)">Add 50</button>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Purpose
+- Make functions reusable  
+- Avoid hardcoding values  
+- Allow different behaviors from one method
 
-```bash
-ng generate --help
+---
+
+## 2. Event Binding `(click)`
+Used button clicks to trigger logic.
+
+```html
+(click)="toggleMessage()"
 ```
 
-## Building
+### Purpose
+Connect user actions to TypeScript functions.
 
-To build the project run:
+Examples used:
+- Add coins
+- Toggle messages
+- Toggle password visibility
+- Add and remove tasks
 
-```bash
-ng build
+---
+
+## 3. Toggle Logic
+Used boolean state to switch features on and off.
+
+```ts
+showMessage = false;
+
+toggleMessage() {
+ this.showMessage = !this.showMessage;
+}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Purpose
+Used for:
+- Show/Hide content
+- Toggle UI states
+- Interactive app behavior
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 4. Conditional Rendering (`*ngIf`)
+Displayed content only when conditions are true.
 
-```bash
-ng test
+```html
+<p *ngIf="showMessage">
+Hello Angular!
+</p>
 ```
 
-## Running end-to-end tests
+### Purpose
+Show or hide elements dynamically.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
+## 5. Dynamic Attribute Binding
+Used property binding to switch password visibility.
+
+```html
+<input
+[type]="showPassword ? 'text' : 'password'"
+[(ngModel)]="password"
+/>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Purpose
+Change HTML behavior dynamically from component state.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 6. Arrays and List Management
+Created and managed a simple todo list.
+
+```ts
+tasks: string[] = [];
+```
+
+Add task:
+
+```ts
+this.tasks.push(this.task);
+```
+
+Delete task:
+
+```ts
+this.tasks.splice(index,1);
+```
+
+### Purpose
+- Store multiple values
+- Add data dynamically
+- Remove items from a list
+
+---
+
+## 7. Looping with `*ngFor`
+Rendered items from an array.
+
+```html
+<li *ngFor="let item of tasks; let i = index">
+{{ item }}
+</li>
+```
+
+### Purpose
+Display repeated data dynamically.
+
+---
+
+# Angular Concepts Reinforced
+
+## Variables / State
+```ts
+coins = 0;
+showMessage = false;
+showPassword = false;
+task = '';
+```
+
+State controls UI behavior.
+
+---
+
+## Methods / Functions
+```ts
+addCoins()
+toggleMessage()
+togglePassword()
+addTask()
+removeTask()
+```
+
+Functions handle logic and events.
+
+---
+
+## Interpolation
+```html
+{{ coins }}
+```
+
+Displays dynamic data.
+
+---
+
+## Automatic UI Updates
+Angular updates the interface automatically whenever state changes.
+
+Flow:
+
+```text
+User Action
+↓
+Event Triggers Function
+↓
+State Changes
+↓
+UI Updates Automatically
+```
+
+---
+
+# Mini Projects Built
+
+## Coin Counter
+- Add 5
+- Add 10
+- Add 50
+
+---
+
+## Toggle Message Feature
+Show and hide content dynamically.
+
+---
+
+## Show/Hide Password
+Interactive password visibility feature.
+
+---
+
+## Simple Todo List
+Features:
+- Add task
+- Delete task
+- Render task list dynamically
+
+---
+
+# Key Takeaways
+
+- Events drive frontend behavior
+- Functions can receive values through parameters
+- Boolean state can control toggles
+- Arrays allow dynamic list management
+- `push()` adds items
+- `splice()` removes items
+- `*ngFor` loops through data for UI rendering
+
+---
+
+## Summary
+Today focused on event-driven programming in Angular.
+
+Main lesson:
+
+> Angular applications react to user events by changing state, and the UI updates automatically based on those changes.
+
+This is the foundation for building interactive applications.
