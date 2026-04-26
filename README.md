@@ -16,7 +16,7 @@ Functions can receive values when triggered by events.
 addCoins(amount: number) {
   this.coins += amount;
 }
-```
+````
 
 ```html
 <button (click)="addCoins(5)">Add 5</button>
@@ -95,17 +95,34 @@ Displayed content based on conditions.
 
 ---
 
-### 5. Dynamic Attribute Binding Used property binding to change input behavior.
-html
+### 5. Dynamic Attribute Binding
+
+Used property binding to change input behavior.
+
+```html
 <input
   [type]="showPassword ? 'text' : 'password'"
   [(ngModel)]="password"
 />
-
 ```
 
+#### Explanation
 
-**Purpose:**
+`text` and `password` are HTML input types:
+
+* **`text`** → shows the actual characters typed
+* **`password`** → hides the characters (●●●●●)
+
+#### How it works
+
+```ts
+showPassword ? 'text' : 'password'
+```
+
+* If `showPassword` is **true** → input becomes `text` (visible)
+* If `showPassword` is **false** → input becomes `password` (hidden)
+
+#### Purpose
 
 * Dynamically control HTML attributes
 * Improve user interaction (e.g., show/hide password)
@@ -258,3 +275,4 @@ UI Updates Automatically
 ## 🚀 Key Takeaway
 
 Angular applications are event-driven. User actions trigger functions, which update the state, and the UI automatically reflects those changes.
+
