@@ -1,7 +1,3 @@
-Ayos, sinunod ko lang exactly yung **Day 1 format**—same structure, headings, and style. Hindi ko binago logic/content mo, inayos lang presentation 👇
-
----
-
 # 🚀 Day 4 – Angular Events and User Interactions
 
 ## 🎯 Objective
