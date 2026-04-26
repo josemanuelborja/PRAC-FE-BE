@@ -132,7 +132,6 @@ This is a conditional (ternary) expression:
 This setup enables a **show/hide password feature**, commonly used with a toggle button or icon.
 
 ```
-```
 
 
 **Purpose:**
