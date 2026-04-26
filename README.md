@@ -1,59 +1,236 @@
-# FEBE
+# 🚀 Day 5 – Angular Components and Reusable UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## 🎯 Objective
 
-## Development server
+Learn how Angular applications are structured using components and how to build reusable UI using parent-child communication with `@Input()`.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🧠 Key Concepts Learned
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 1. Components
 
-## Code scaffolding
+A component is a reusable piece of UI that contains:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* HTML (template)
+* TypeScript (logic)
+* CSS/SCSS (styling)
 
-```bash
-ng generate component component-name
-```
+**Examples:**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* User Card
+* Product Card
+* Navbar
+* Forms
 
-```bash
-ng generate --help
-```
+**Purpose:**
 
-## Building
+* Organize code
+* Reuse UI
+* Improve maintainability
+* Reduce repetition
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+### 2. Creating Custom Components
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Created reusable Angular components:
 
 ```bash
-ng test
+ng generate component user-card
+ng generate component product-card
 ```
 
-## Running end-to-end tests
+**Generated:**
 
-For end-to-end (e2e) testing, run:
+* `user-card.component.ts`
+* `user-card.component.html`
+* `product-card.component.ts`
+* `product-card.component.html`
 
-```bash
-ng e2e
+**Purpose:**
+
+* Quickly scaffold components
+* Standardize structure
+
+---
+
+### 3. Custom Component Tags
+
+Used components as custom HTML elements.
+
+```html
+<app-user-card></app-user-card>
+<app-product-card></app-product-card>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+**Purpose:**
 
-## Additional Resources
+* Use reusable building blocks
+* Simplify UI structure
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+### 4. Parent to Child Data Passing (`@Input()`)
+
+Used `@Input()` to receive data from parent components.
+
+```ts
+@Input() name = '';
+@Input() role = '';
+@Input() level = '';
+```
+
+Product card:
+
+```ts
+@Input() productName = '';
+@Input() productPrice = 0;
+```
+
+**Purpose:**
+
+* Pass data into components
+* Make components dynamic
+
+---
+
+### 5. Reusable Components with Dynamic Data
+
+Example:
+
+```html
+<app-user-card
+[name]="'JM'"
+[role]="'Angular Developer'"
+[level]="'Junior'">
+</app-user-card>
+```
+
+Another reusable instance:
+
+```html
+<app-user-card
+[name]="'Alex'"
+[role]="'Backend Developer'"
+[level]="'Junior'">
+</app-user-card>
+```
+
+**Purpose:**
+
+* Reuse one component multiple times
+* Display different data
+
+---
+
+### 6. Product Card Mini Project
+
+Created reusable product cards:
+
+```html
+<app-product-card
+[productName]="'Laptop'"
+[productPrice]="200">
+</app-product-card>
+
+<app-product-card
+[productName]="'Phone'"
+[productPrice]="150">
+</app-product-card>
+
+<app-product-card
+[productName]="'Keyboard'"
+[productPrice]="50">
+</app-product-card>
+```
+
+**Learned:**
+
+* One component can render many different products
+
+---
+
+### 7. Component Imports
+
+Imported standalone components into the root component.
+
+```ts
+imports: [
+UserCardComponent,
+ProductCardComponent
+]
+```
+
+**Purpose:**
+
+* Enable usage of components
+
+---
+
+### 8. Interpolation (`{{ }}`)
+
+Used to display component data.
+
+```html
+{{ name }}
+{{ role }}
+{{ level }}
+```
+
+**Purpose:**
+
+* Show dynamic values in UI
+
+---
+
+### 9. Inputs (`@Input()`)
+
+```ts
+@Input()
+```
+
+Flow:
+
+```text
+Parent Component
+↓
+Passes Data
+↓
+Child Component Receives Data
+```
+
+**Purpose:**
+
+* Enable parent → child communication
+
+---
+
+### 10. Component Responsibilities
+
+Simple separation learned:
+
+```text
+Component = UI / Presentation
+Service = Logic / Data (next topic)
+```
+
+**Purpose:**
+
+* Keep code clean and scalable
+
+---
+
+## 📌 Quick Summary
+
+* Components → Reusable UI blocks
+* `@Input()` → Parent to child data passing
+* Custom tags → Use components in HTML
+* Interpolation → Display data
+* One component → Multiple data sets
+
+---
+
+## 🚀 Key Takeaway
+
+Angular applications are built from small reusable components. By combining them and passing data between components, you can build scalable and maintainable applications.
