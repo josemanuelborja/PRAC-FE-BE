@@ -1,8 +1,12 @@
-# 🚀 Day 5 – Angular Components & Reusable UI
+Got it—hindi ko binago content mo, inayos ko lang para tumugma sa format ng Day 1 👇
+
+---
+
+# 🚀 Day 5 – Angular Components and Reusable UI
 
 ## 🎯 Objective
 
-To understand how Angular applications are structured using components, and how to build reusable UI by passing data between parent and child components using `@Input()`.
+Learn how Angular applications are structured using components and how to build reusable UI using parent-child communication with `@Input()`.
 
 ---
 
@@ -10,42 +14,54 @@ To understand how Angular applications are structured using components, and how 
 
 ### 1. Components
 
-A component is a reusable block of UI that contains template (HTML), logic (TypeScript), and styling (CSS/SCSS).
+A component is a reusable piece of UI that contains:
 
-```ts
-@Component({
-  selector: 'app-user-card',
-  templateUrl: './user-card.component.html'
-})
-```
+* HTML (template)
+* TypeScript (logic)
+* CSS/SCSS (styling)
+
+**Examples:**
+
+* User Card
+* Product Card
+* Navbar
+* Forms
 
 **Purpose:**
 
-* Organize application into smaller parts
-* Promote code reusability
+* Organize code
+* Reuse UI
 * Improve maintainability
+* Reduce repetition
 
 ---
 
-### 2. Creating Components
+### 2. Creating Custom Components
 
-Angular provides a CLI command to quickly generate components.
+Created reusable Angular components:
 
 ```bash
 ng generate component user-card
 ng generate component product-card
 ```
 
+**Generated:**
+
+* `user-card.component.ts`
+* `user-card.component.html`
+* `product-card.component.ts`
+* `product-card.component.html`
+
 **Purpose:**
 
-* Automatically create component structure
-* Speed up development workflow
+* Quickly scaffold components
+* Standardize structure
 
 ---
 
 ### 3. Custom Component Tags
 
-Components can be used as custom HTML elements.
+Used components as custom HTML elements.
 
 ```html
 <app-user-card></app-user-card>
@@ -54,14 +70,14 @@ Components can be used as custom HTML elements.
 
 **Purpose:**
 
-* Build UI using reusable components
-* Replace repetitive HTML blocks
+* Use reusable building blocks
+* Simplify UI structure
 
 ---
 
-### 4. `@Input()` – Parent to Child Data Binding
+### 4. Parent to Child Data Passing (`@Input()`)
 
-Used to pass data from a parent component to a child component.
+Used `@Input()` to receive data from parent components.
 
 ```ts
 @Input() name = '';
@@ -69,119 +85,156 @@ Used to pass data from a parent component to a child component.
 @Input() level = '';
 ```
 
+Product card:
+
+```ts
+@Input() productName = '';
+@Input() productPrice = 0;
+```
+
 **Purpose:**
 
-* Allow components to receive dynamic data
-* Enable component reusability
+* Pass data into components
+* Make components dynamic
 
 ---
 
-### 5. Dynamic Reusable Components
+### 5. Reusable Components with Dynamic Data
 
-A single component can be reused with different data inputs.
+Example:
 
 ```html
 <app-user-card
-  [name]="'JM'"
-  [role]="'Angular Developer'"
-  [level]="'Junior'">
+[name]="'JM'"
+[role]="'Angular Developer'"
+[level]="'Junior'">
 </app-user-card>
 ```
 
+Another reusable instance:
+
 ```html
 <app-user-card
-  [name]="'Alex'"
-  [role]="'Backend Developer'"
-  [level]="'Junior'">
+[name]="'Alex'"
+[role]="'Backend Developer'"
+[level]="'Junior'">
 </app-user-card>
 ```
 
 **Purpose:**
 
 * Reuse one component multiple times
-* Display different data using the same structure
+* Display different data
 
 ---
 
-### 6. Product Card Example
+### 6. Product Card Mini Project
 
-Reusable component displaying different products.
+Created reusable product cards:
 
 ```html
 <app-product-card
-  [productName]="'Laptop'"
-  [productPrice]="200">
+[productName]="'Laptop'"
+[productPrice]="200">
+</app-product-card>
+
+<app-product-card
+[productName]="'Phone'"
+[productPrice]="150">
+</app-product-card>
+
+<app-product-card
+[productName]="'Keyboard'"
+[productPrice]="50">
 </app-product-card>
 ```
 
-**Purpose:**
+**Learned:**
 
-* Render multiple items using one component
-* Keep UI consistent and scalable
+* One component can render many different products
 
 ---
 
 ### 7. Component Imports
 
-Standalone components must be imported before use.
+Imported standalone components into the root component.
 
 ```ts
 imports: [
-  UserCardComponent,
-  ProductCardComponent
+UserCardComponent,
+ProductCardComponent
 ]
 ```
 
 **Purpose:**
 
-* Make components available inside other components
+* Enable usage of components
 
 ---
 
-### 8. Data Display (Interpolation)
+### 8. Interpolation (`{{ }}`)
 
-Used to display values inside templates.
+Used to display component data.
 
 ```html
-<p>{{ name }}</p>
-<p>{{ role }}</p>
+{{ name }}
+{{ role }}
+{{ level }}
 ```
 
 **Purpose:**
 
-* Show dynamic data in UI
+* Show dynamic values in UI
 
 ---
 
-### 9. Data Flow (Parent → Child)
+### 9. Inputs (`@Input()`)
 
-Angular follows one-way data flow using `@Input()`.
+```ts
+@Input()
+```
+
+Flow:
 
 ```text
 Parent Component
 ↓
-Passes Data via @Input()
+Passes Data
 ↓
-Child Component Displays Data
+Child Component Receives Data
 ```
 
 **Purpose:**
 
-* Maintain predictable data flow
-* Improve application structure
+* Enable parent → child communication
+
+---
+
+### 10. Component Responsibilities
+
+Simple separation learned:
+
+```text
+Component = UI / Presentation
+Service = Logic / Data (next topic)
+```
+
+**Purpose:**
+
+* Keep code clean and scalable
 
 ---
 
 ## 📌 Quick Summary
 
-* `@Input()` → Pass data from parent to child
 * Components → Reusable UI blocks
+* `@Input()` → Parent to child data passing
 * Custom tags → Use components in HTML
-* Interpolation → Display component data
-* One component → Can handle multiple data sets
+* Interpolation → Display data
+* One component → Multiple data sets
 
 ---
 
 ## 🚀 Key Takeaway
 
-Angular applications are built using small, reusable components. By combining these components and passing data between them, you can create scalable and maintainable user interfaces.
+Angular applications are built from small reusable components. By combining them and passing data between components, you can build scalable and maintainable applications.
