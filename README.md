@@ -95,15 +95,8 @@ Displayed content based on conditions.
 
 ---
 
-Here’s another clean version with a slightly different style:
-
-````md id="a9k2mf"
-
-### 5. Dynamic Attribute Binding
-
-This example uses property binding to dynamically change the input type.
-
-```html
+### 5. Dynamic Attribute Binding Used property binding to change input behavior.
+html
 <input
   [type]="showPassword ? 'text' : 'password'"
   [(ngModel)]="password"
