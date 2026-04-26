@@ -167,6 +167,13 @@ Rendered list items dynamically.
 </li>
 ```
 
+### 🧠 Breakdown
+
+* `tasks` → your array (data source)
+* `item` → a temporary variable representing each value inside the array
+* `let` → declares a variable
+* `of` → means “from” or “coming from”
+
 **Explanation:**
 
 * `index` is a built-in variable in `*ngFor`
