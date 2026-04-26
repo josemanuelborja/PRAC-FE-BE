@@ -1,7 +1,3 @@
-Got it—hindi ko binago content mo, inayos ko lang para tumugma sa format ng Day 1 👇
-
----
-
 # 🚀 Day 5 – Angular Components and Reusable UI
 
 ## 🎯 Objective
