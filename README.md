@@ -95,16 +95,45 @@ Displayed content based on conditions.
 
 ---
 
+Here’s another clean version with a slightly different style:
+
+````md id="a9k2mf"
 ### 5. Dynamic Attribute Binding
 
-Used property binding to change input behavior.
+This example uses property binding to dynamically change the input type.
 
 ```html
 <input
   [type]="showPassword ? 'text' : 'password'"
   [(ngModel)]="password"
 />
+````
+
+#### What do `text` and `password` mean?
+
+They are HTML input types that define how user input is displayed:
+
+* **`text`** → shows the actual characters typed
+* **`password`** → hides the characters (e.g., ●●●●●)
+
+#### How it works
+
+```ts id="q3x8zn"
+showPassword ? 'text' : 'password'
 ```
+
+This is a conditional (ternary) expression:
+
+* When `showPassword` is `true`, the input type becomes `text` (visible)
+* When `showPassword` is `false`, the input type becomes `password` (hidden)
+
+#### Result
+
+This setup enables a **show/hide password feature**, commonly used with a toggle button or icon.
+
+```
+```
+
 
 **Purpose:**
 
