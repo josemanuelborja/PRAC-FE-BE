@@ -1,59 +1,286 @@
-# FEBE
+# 🚀 Day 7 – Angular API Calls with HttpClient
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## 🎯 Objective
 
-## Development server
+To learn how Angular communicates with backend APIs using `HttpClient`, fetch remote data with GET requests, and display dynamic API data in the UI.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## 🧠 Key Concepts Learned
+
+### 1. What is an API
+
+An API allows the frontend and backend to communicate and exchange data.
+
+Flow:
+
+```text
+Frontend Request
+↓
+API
+↓
+Backend Response
+↓
+Display Data in UI
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Example response:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```json
+[
+ {
+   "name":"John",
+   "email":"john@email.com"
+ }
+]
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+**Purpose:**
 
-```bash
-ng generate --help
+* Send requests for data
+* Receive data from a backend
+* Display dynamic content in the UI
+
+---
+
+### 2. HttpClient
+
+Used Angular `HttpClient` to make requests.
+
+Import:
+
+```ts
+import { HttpClientModule } from '@angular/common/http';
 ```
 
-## Building
+Service uses:
 
-To build the project run:
-
-```bash
-ng build
+```ts
+import { HttpClient } from '@angular/common/http';
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**Purpose:**
 
-## Running unit tests
+* Make HTTP requests to APIs
+* Connect Angular apps to backend data
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
+### 3. GET Request
+
+Used a GET request to fetch user data.
+
+```ts
+getUsers(){
+ return this.http.get(
+  'https://jsonplaceholder.typicode.com/users'
+ );
+}
 ```
 
-## Running end-to-end tests
+**Purpose:**
 
-For end-to-end (e2e) testing, run:
+* Retrieve data from a server
 
-```bash
-ng e2e
+---
+
+### 4. API Service
+
+Created a service to manage API logic.
+
+```ts
+@Injectable({
+ providedIn:'root'
+})
+export class UserService {
+
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Architecture:
 
-## Additional Resources
+```text
+Component = UI / Presentation
+Service = Data / API Logic
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Purpose:**
+
+* Keep API logic out of components
+* Separate UI from data logic
+
+---
+
+### 5. Dependency Injection (DI)
+
+Injected the service into the component.
+
+```ts
+constructor(
+ private userService: UserService
+){}
+```
+
+**Purpose:**
+
+* Give components access to services
+* Let Angular provide dependencies automatically
+
+---
+
+### 6. `subscribe()` for Responses
+
+Used `subscribe()` to handle asynchronous API responses.
+
+```ts
+this.userService.getUsers()
+.subscribe({
+ next:(data:any)=>{
+  this.users = data;
+ },
+ error:()=>{
+  this.error='Failed to load users';
+ }
+});
+```
+
+**Purpose:**
+
+* Wait for API responses
+* Process returned data
+* Handle success and errors
+
+---
+
+### 7. Loading State
+
+Added loading feedback while waiting for data.
+
+```ts
+loading = false;
+```
+
+```html
+<p *ngIf="loading">
+Loading...
+</p>
+```
+
+**Purpose:**
+
+* Show users data is loading
+
+---
+
+### 8. Error Handling
+
+Handled failed requests.
+
+```ts
+error = '';
+```
+
+```ts
+error:()=>{
+ this.error='Failed to load users';
+}
+```
+
+**Purpose:**
+
+* Prevent silent failures
+* Show useful feedback to users
+
+---
+
+### 9. Displaying API Data
+
+Rendered data using `*ngFor`.
+
+```html
+<li *ngFor="let user of users">
+{{ user.name }} - {{ user.email }}
+</li>
+```
+
+**Purpose:**
+
+* Display API data dynamically in a list
+
+---
+
+### 10. Reload Data
+
+Added a reload button.
+
+```html
+<button (click)="getUsers()">
+Reload Users
+</button>
+```
+
+**Purpose:**
+
+* Refetch data from the API manually
+
+---
+
+## 📌 Angular Concepts Reinforced
+
+### 11. `ngOnInit()`
+
+Used to load data when the component starts.
+
+```ts
+ngOnInit(){
+ this.getUsers();
+}
+```
+
+**Purpose:**
+
+* Run code when the component loads
+
+---
+
+### 12. Event Binding (`(click)`)
+
+```html
+(click)="getUsers()"
+```
+
+**Purpose:**
+
+* Trigger API calls from user actions
+
+---
+
+### 13. Conditional Rendering (`*ngIf`)
+
+```html
+*ngIf="loading"
+*ngIf="error"
+```
+
+**Purpose:**
+
+* Show or hide UI based on application state
+
+---
+
+## 📌 Quick Summary
+
+* APIs connect frontend and backend
+* `HttpClient` makes HTTP requests
+* `http.get()` fetches data
+* `subscribe()` handles async responses
+* `*ngIf` shows loading and error states
+* `*ngFor` displays API data
+* Services manage API logic
+* Components display the data
+
+---
+
+## 🚀 Key Takeaway
+
+Angular can fetch data from APIs and display it dynamically in the UI. Using `HttpClient`, services, loading states, and error handling is a core real-world frontend development skill.
