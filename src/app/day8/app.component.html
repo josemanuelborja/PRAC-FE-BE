@@ -1,0 +1,33 @@
+<h1>{{ title }} </h1>
+
+<h1>Create User</h1>
+
+<input
+[(ngModel)]="name"
+placeholder="Name">
+
+<br><br>
+
+<input
+[(ngModel)]="email"
+placeholder="Email">
+
+<br><br>
+
+<input
+type="number"
+[(ngModel)]="age"
+placeholder="Age">
+
+<br><br>
+
+<button
+(click)="createUser()"
+[disabled]="!name.trim() || !email.trim() || loading">
+Submit
+</button>
+
+
+<p *ngIf="loading">Submitting...</p>
+<p *ngIf="success" style="color:green">{{ success }}</p>
+<p *ngIf="error" style="color:red">{{ error }}</p>
