@@ -1,59 +1,268 @@
-# FEBE
+# 🚀 Day 10 – Angular Routing and Multi-Page Applications
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## 🎯 Objective
 
-## Development server
+To learn how to create a multi-page Angular application using Angular Routing, navigation links, and route configuration.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## 🧠 Key Concepts Learned
+
+### 1. What is Routing?
+
+Routing is the process of displaying different components based on the current URL.
+
+| URL      | Component  |
+| -------- | ---------- |
+| `/`      | Home Page  |
+| `/about` | About Page |
+| `/tasks` | Tasks Page |
+
+**Purpose:**
+
+* Connect URLs to Angular components
+* Create multi-page experiences within a single application
+
+---
+
+### 2. Single Page Application (SPA)
+
+Angular is a Single Page Application (SPA).
+
+Flow:
+
+```text
+Click Link
+↓
+Angular Changes Component
+↓
+URL Updates
+↓
+Page Content Changes
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+**Purpose:**
 
-## Code scaffolding
+* Navigate without reloading the browser
+* Create faster and smoother user experiences
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+**Benefits:**
 
-```bash
-ng generate component component-name
+* Faster navigation
+* Better user experience
+* Reduced server requests
+
+---
+
+### 3. Route Configuration
+
+Created application routes.
+
+```ts
+export const routes = [
+ {
+  path: '',
+  component: HomeComponent
+ },
+ {
+  path: 'about',
+  component: AboutComponent
+ },
+ {
+  path: 'tasks',
+  component: TasksComponent
+ }
+];
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+**Purpose:**
 
-```bash
-ng generate --help
+* Map URLs to Angular components
+
+---
+
+### 4. `provideRouter()`
+
+Configured routing inside `main.ts`.
+
+```ts
+provideRouter(routes)
 ```
 
-## Building
+**Purpose:**
 
-To build the project run:
+* Register application routes
+* Enable Angular routing
 
-```bash
-ng build
+---
+
+### 5. Router Outlet
+
+Used:
+
+```html
+<router-outlet></router-outlet>
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**Purpose:**
 
-## Running unit tests
+* Display the currently active route component
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Think of it as:
 
-```bash
-ng test
+```text
+Router Outlet = Page Container
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+### 6. `routerLink`
 
-```bash
-ng e2e
+Used:
+
+```html
+<a routerLink="/about">
+ About
+</a>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+**Purpose:**
 
-## Additional Resources
+* Navigate between Angular routes
+* Prevent full page reloads
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+### 7. `routerLinkActive`
+
+Used:
+
+```html
+routerLinkActive="active"
+```
+
+Example:
+
+```html
+<a
+ routerLink="/about"
+ routerLinkActive="active">
+ About
+</a>
+```
+
+**Purpose:**
+
+* Automatically apply a CSS class to the active route
+
+---
+
+### 8. Active Navigation Styling
+
+Created active route styling.
+
+```scss
+.active {
+ font-weight: bold;
+ color: red;
+}
+```
+
+**Purpose:**
+
+* Visually indicate the currently selected page
+
+---
+
+### 9. Exact Route Matching
+
+Used:
+
+```html
+[routerLinkActiveOptions]="{ exact: true }"
+```
+
+Example:
+
+```html
+<a
+ routerLink="/"
+ routerLinkActive="active"
+ [routerLinkActiveOptions]="{ exact: true }">
+ Home
+</a>
+```
+
+**Purpose:**
+
+* Ensure the Home link is only active on the exact `/` route
+
+---
+
+## 📌 Angular Concepts Reinforced
+
+### 10. Component Imports
+
+Imported Angular routing directives.
+
+```ts
+import {
+ RouterOutlet,
+ RouterLink,
+ RouterLinkActive
+} from '@angular/router';
+```
+
+Registered inside the component:
+
+```ts
+imports: [
+ RouterOutlet,
+ RouterLink,
+ RouterLinkActive
+]
+```
+
+**Purpose:**
+
+* Enable routing features inside components
+
+---
+
+### 11. Navigation Structure
+
+Created a navigation menu.
+
+```html
+<nav>
+
+<a routerLink="/">Home</a>
+
+<a routerLink="/about">About</a>
+
+<a routerLink="/tasks">Tasks</a>
+
+</nav>
+```
+
+**Purpose:**
+
+* Allow users to switch between pages
+
+---
+
+## 📌 Quick Summary
+
+* Routing connects URLs to components
+* Angular uses `routerLink` for navigation
+* `router-outlet` displays routed pages
+* `routerLinkActive` highlights active routes
+* `provideRouter()` enables routing
+* Angular is a Single Page Application (SPA)
+* SPA navigation avoids full page reloads
+
+---
+
+## 🚀 Key Takeaway
+
+Angular Routing allows users to navigate between pages while keeping the application fast, dynamic, and free from full browser reloads. It is a core Angular feature and an important step toward building real-world applications.
