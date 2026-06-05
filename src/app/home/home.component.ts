@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, NgIf],
-  templateUrl: './app.component.html'
+  imports: [FormsModule, CommonModule],
+  templateUrl: './home.component.html'
 })
 
 
-export class AppComponent {
+export class HomeComponent {
   title: string = 'My First Angular App';
 
 }
