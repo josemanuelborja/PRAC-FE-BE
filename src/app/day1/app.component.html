@@ -1,2 +1,15 @@
 <h1>{{ title }} </h1>
 
+<p>Coins: {{ coins }}</p>
+
+<p *ngIf="coins >= 20">You are rich!</p>
+
+<p *ngIf="coins === 0">No coins yet</p>
+
+<button (click)="addCoins()">Earn Coins</button>
+<br><br>
+<button (click)="resetCoins()">Reset Coins</button>
+<br><br>
+<button (click)="decreaseCoins()" [disabled]="coins < 5">
+  Spend Coins
+</button>

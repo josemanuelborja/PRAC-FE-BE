@@ -1,59 +1,105 @@
-# FEBE
+# 🚀 Day 1 – Angular Basics
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## 🎯 Objective
+To learn the fundamentals of Angular, including components, data binding, event handling, conditional rendering, and basic state management.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🧠 Key Concepts Learned
 
-```bash
-ng serve
+### 1. State (Variables)
+Variables are used to store data that can change over time and directly affect the UI.
+
+```ts
+coins: number = 0;
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+**Purpose:**
+- Store application data  
+- Bind data to the UI for display and logic  
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 2. Methods (Functions / Logic)
+Functions define the behavior of the application and handle user interactions.
 
-```bash
-ng generate component component-name
+```ts
+addCoins() {
+  this.coins += 5;
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+**Purpose:**
+- Handle user actions (clicks, inputs, etc.)
+- Update application state (variables)
 
-```bash
-ng generate --help
+---
+
+### 3. Interpolation (`{{ }}`)
+Used to display data from the component (TypeScript) into the HTML template.
+
+```html
+<p>Coins: {{ coins }}</p>
 ```
 
-## Building
+**Purpose:**
+- Display dynamic data in the UI
 
-To build the project run:
+---
 
-```bash
-ng build
+### 4. Event Binding (`(click)`)
+Used to listen and respond to user events such as clicks.
+
+```html
+<button (click)="addCoins()">Earn Coins</button>
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**Purpose:**
+- Trigger functions when a user interacts with the UI
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### 5. Conditional Rendering (`*ngIf`)
+Used to show or hide elements based on conditions.
 
-```bash
-ng test
+```html
+<p *ngIf="coins >= 20">You are rich!</p>
 ```
 
-## Running end-to-end tests
+**Purpose:**
+- Control UI visibility dynamically
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
+### 6. `this` Keyword
+Used to access properties and methods inside the Angular component class.
+
+```ts
+this.coins
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+**Purpose:**
+- Reference component state and behavior
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 7. Angular Automatic UI Updates
+Angular automatically updates the UI whenever the underlying data changes.
+
+**Example:**
+- If `coins` changes in TypeScript → the UI updates instantly
+
+---
+
+## 📌 Quick Summary
+
+- `{{ }}` → Interpolation (display data)
+- `(click)` → Event binding (handle user actions)
+- `*ngIf` → Conditional rendering (show/hide elements)
+- `this.variable` → Access component state
+- Angular automatically updates the UI when data changes
+
+---
+
+## 🚀 Key Takeaway
+Angular is a reactive framework where the UI is directly connected to the state. When the state changes, the UI updates automatically without manual DOM manipulation.

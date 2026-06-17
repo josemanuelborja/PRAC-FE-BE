@@ -14,4 +14,20 @@ import { NgIf } from '@angular/common';
 export class AppComponent {
   title: string = 'My First Angular App';
 
+  coins: number = 0;
+
+  addCoins() {
+    this.coins = this.coins + 5; // or this.coins += 5;
+  }
+
+  resetCoins() {
+    this.coins = 0;
+  }
+
+  decreaseCoins() {
+    if (this.coins >= 5) {
+      this.coins = this.coins - 5; // or this.coins -= 5;
+    }
+  }
+
 }
